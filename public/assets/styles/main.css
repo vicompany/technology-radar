@@ -1,0 +1,43 @@
+:root {
+    /* https://coolors.co/05668d-028090-00a896-02c39a-f0f3bd */
+    --color-level--1: #05668d;
+    --color-level--2: #028090;
+    --color-level--3: #00a896;
+    --color-level--4: #02c39a;
+    --color-level--5: #f0f3bd;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 36em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.radar {
+    height: auto;
+    width: 100%;
+}
+
+.technology-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.level--1 { fill: var(--color-level--1); }
+.level--2 { fill: var(--color-level--2); }
+.level--3 { fill: var(--color-level--3); }
+.level--4 { fill: var(--color-level--4); }
+
+.technology {
+    fill: var(--color-level--5);
+}
+
+.is-active {
+    font-weight: bolder;
+}

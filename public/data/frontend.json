@@ -1,0 +1,55 @@
+{
+  "levels": [{
+      "key": "adopt",
+      "name": "Adopt"
+    },
+    {
+      "key": "trial",
+      "name": "Trial"
+    },
+    {
+      "key": "assess",
+      "name": "Assess"
+    },
+    {
+      "key": "hold",
+      "name": "Hold"
+    }
+  ],
+
+  "items": {
+    "adopt": [
+      "Babel",
+      "Browserify",
+      "CSS: BEM",
+      "CSS: Flexbox",
+      "CSS: Grid",
+      "CSS: ITCSS",
+      "ES2015",
+      "Fractal",
+      "Gulp",
+      "Grunt",
+      "Highcharts",
+      "HTTP: CSP",
+      "HTTP: CORS",
+      "Progressive Enhancement",
+      "Sass",
+      "Web API: WebSockets"
+    ],
+    "trial": [
+      "Node.js",
+      "Web API: Service Workers"
+    ],
+    "assess": [
+      "D3.js",
+      "HTTP2",
+      "Web Components"
+    ],
+    "hold": [
+      "Web API: WebRCT",
+      "PostCSS",
+      "Progressive Web Apps",
+      "WebPack"
+    ]
+  }
+}
