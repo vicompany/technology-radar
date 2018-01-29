@@ -1,7 +1,7 @@
 import LevelModel from '../models/level.js';
 import TechnologyModel from '../models/technology.js';
 
-const URL = '/data/frontend.json';
+const URL = 'data/frontend.json';
 
 const parseItems = (levels, items) => levels.reduce((itemList, level) => {
 	const itemsParsed = items[level.key]
