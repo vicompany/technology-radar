@@ -23,19 +23,13 @@ body {
     height: auto;
     width: 100%;
 }
+.radar__technology {
+    fill: var(--color-level--5);
+}
 
 .technology-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-.level--1 { fill: var(--color-level--1); }
-.level--2 { fill: var(--color-level--2); }
-.level--3 { fill: var(--color-level--3); }
-.level--4 { fill: var(--color-level--4); }
-
-.technology {
-    fill: var(--color-level--5);
 }
 
 .tooltip {
@@ -46,6 +40,11 @@ body {
     position: absolute;
     transform: translate(-50%, calc(-50% - 2em));
 }
+
+.fill--level-1 { fill: var(--color-level--1); }
+.fill--level-2 { fill: var(--color-level--2); }
+.fill--level-3 { fill: var(--color-level--3); }
+.fill--level-4 { fill: var(--color-level--4); }
 
 .is-active {
     font-weight: bolder;

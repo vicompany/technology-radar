@@ -1,11 +1,10 @@
 import Vector2 from '../models/vector2.js';
 
+const TAU = Math.PI * 2;
 const lerp = (a, b, t) => (t * (b - a)) + a;
 
 export default {
 	get(levels, technologyByLevel) {
-		const TAU = Math.PI * 2;
-
 		const svgLevels = this._getLevels(levels);
 		const technologyRadius = 4;
 
@@ -23,25 +22,10 @@ export default {
 				return `<circle r="${technologyRadius}"
 					cx="${position.x * 50}%"
 					cy="${position.y * 50}%"
-					class="technology"
+					class="radar__technology"
 					data-technology-id="${technology.id}"></circle>`;
 			}).join('');
 		}, '');
-
-		// const svgContents = technology.reduce((svg, item, i) => {
-		// 	const levelIndex = levels.indexOf(item.level);
-		// 	const levelInnerRadius = this._getLevelRadius(technologyByLevel, levelIndex - 1);
-		// 	const levelOuterRadius = this._getLevelRadius(technologyByLevel, levelIndex);
-		// 	const positionRadius = lerp(levelInnerRadius, levelOuterRadius, i % 2 === 0 ? 0.25 : 0.75);
-		// 	const position = Vector2.fromPolar((i / technology.length) * TAU, positionRadius);
-
-		// 	const circleTechnology = `<circle cx="${position.x * 50}%" cy="${position.y * 50}%"
-		// 		r="${technologyRadius}">
-		// 		<text>${item.name}</text>
-		// 	</circle>`;
-
-		// 	return `${svg} ${circleTechnology}`;
-		// }, '');
 
 		return this._getBase(Vector2.fromScalar(512, 512), svgLevels + svgContents);
 	},
@@ -58,7 +42,7 @@ export default {
 	_getLevels(levels) {
 		return levels.reduce((svg, level, i) => `<circle
 			r="${this._getLevelRadius(levels, i) * 50}%"
-			class="level level--${i + 1}"></circle>
+			class="fill fill--level-${i + 1}"></circle>
 			${svg}`, '');
 	},
 
