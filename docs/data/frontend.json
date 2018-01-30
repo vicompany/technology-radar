@@ -20,66 +20,56 @@
   "items": {
     "adopt": [
       "Ava.js",
-      "Async/await",
       "Babel",
       "Browserify",
       "CSS: BEM",
-      "CSS: Flexbox",
       "CSS: ITCSS",
-      "Core.js",
       "ES2017",
       "Fractal",
       "Gulp",
       "Highcharts",
       "Mobile-first",
+      "NPM Publish",
       "Progressive Enhancement",
-      "SVG (sprites)",
+      "Sass",
       "User testing",
-      "WAI ARIA",
-      "Web API: Fetch",
-      "Web API: WebSockets"
+      "WAI ARIA"
     ],
     "trial": [
-      "Axure RP",
       "CSS: Grid",
       "ChartIQ",
-      "Code splitting (js bundles)",
-      "Cypress.io",
-      "HyperHtml",
+      "NPM Scripts",
       "MJML",
-      "NPM Publish",
       "Performance budget",
       "Vue.js",
-      "Web Components"
+      "WebP"
     ],
     "assess": [
-      "Brotli",
       "CSS: Custom properties",
+      "CDN (for assets)",
       "Critical CSS/JS",
-      "D3.js",
       "Dynamic imports",
       "Functional programming",
-      "Gremlin.js (monkey testing)",
       "HTTP2",
-      "Image CDN",
+      "HyperHtml",
+      "lit-html",
       "Node.js frontend",
-      "NPM Scripts",
       "PostCSS (CSSNext)",
       "Progressive Web Apps",
       "(P)React",
       "Rollup",
       "Streams",
+      "Web Components",
       "WebPack"
     ],
     "hold": [
-      "Angular",
       "Backbone.js",
       "Grunt",
       "Icon fonts",
       "jQuery",
-      "lit-html",
+      "Mustache",
       "Patternlab",
-      "Polymer"
+      "SignalR"
     ]
   }
 }
