@@ -8,6 +8,7 @@ import TechnologyService from './services/technology.js';
 import findTechnologyById from './utils/find-technology-by-id.js';
 import getTechnologyId from './utils/get-technology-id.js';
 import isTechnologyElement from './utils/is-technology-element.js';
+import queryTechnologyElement from './utils/query-technology-element.js';
 
 TechnologyService.setTechnologyRepository(TechnologyRepository);
 
@@ -17,14 +18,13 @@ const tooltip = new Tooltip($refs.get('technology-tooltip'));
 let previousSelectedTechnology = null;
 
 const deactivateTechnology = (technology) => {
-	const selector = `[data-technology-id="${technology.id}"]`;
-	const radarItem = elementRadar.querySelector(selector);
-	const listItem = elementTechnologyList.querySelector(selector);
+	const radarItem = queryTechnologyElement(elementRadar, technology.id);
+	const listItem = queryTechnologyElement(elementTechnologyList, technology.id);
+
+	tooltip.hide();
 
 	radarItem.setAttribute('r', 4);
 	listItem.classList.remove('is-active');
-
-	tooltip.hide();
 };
 
 const activateTechnology = (technology) => {
@@ -32,9 +32,8 @@ const activateTechnology = (technology) => {
 		deactivateTechnology(previousSelectedTechnology);
 	}
 
-	const selector = `[data-technology-id="${technology.id}"]`;
-	const radarItem = elementRadar.querySelector(selector);
-	const listItem = elementTechnologyList.querySelector(selector);
+	const radarItem = queryTechnologyElement(elementRadar, technology.id);
+	const listItem = queryTechnologyElement(elementTechnologyList, technology.id);
 
 	tooltip.setTarget(radarItem);
 	tooltip.setText(technology.name);
@@ -69,15 +68,12 @@ const activateTechnology = (technology) => {
 		const svgBox = elementRadarSvg.getBoundingClientRect();
 		const svgScaleX = svgBox.width / elementRadarSvg.width.baseVal.value;
 		const svgScaleY = svgBox.height / elementRadarSvg.height.baseVal.value;
-
 		const mouseX = e.clientX - svgBox.left - (svgBox.width * 0.5);
 		const mouseY = e.clientY - svgBox.top - (svgBox.height * 0.5);
-
 		const closestItem = Array.from(radarItemElements)
 			.map((el) => {
 				const itemX = el.cx.baseVal.value * svgScaleX;
 				const itemY = el.cy.baseVal.value * svgScaleY;
-
 				const xd = itemX - mouseX;
 				const yd = itemY - mouseY;
 
