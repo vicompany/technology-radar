@@ -6,6 +6,7 @@ import TechnologyRepository from './repositories/technology.js';
 import TechnologyService from './services/technology.js';
 
 import findTechnologyById from './utils/find-technology-by-id.js';
+import getTechnologyId from './utils/get-technology-id.js';
 import isTechnologyElement from './utils/is-technology-element.js';
 
 TechnologyService.setTechnologyRepository(TechnologyRepository);
@@ -88,9 +89,7 @@ const activateTechnology = (technology) => {
 			.sort((a, b) => a.distance - b.distance)
 			.shift();
 
-		const technologyId = Number.parseInt(closestItem.element.dataset.technologyId, 10);
-
-		activateTechnology(findTechnologyById(technologyList, technologyId));
+		activateTechnology(findTechnologyById(technologyList, getTechnologyId(closestItem.element)));
 	});
 
 	window.addEventListener('mouseover', (e) => {
@@ -98,9 +97,7 @@ const activateTechnology = (technology) => {
 			return;
 		}
 
-		const technologyId = Number.parseInt(e.target.dataset.technologyId, 10);
-
-		activateTechnology(findTechnologyById(technologyList, technologyId));
+		activateTechnology(findTechnologyById(technologyList, getTechnologyId(e.target)));
 	});
 
 	window.addEventListener('mouseout', (e) => {
@@ -108,8 +105,6 @@ const activateTechnology = (technology) => {
 			return;
 		}
 
-		const technologyId = Number.parseInt(e.target.dataset.technologyId, 10);
-
-		deactivateTechnology(findTechnologyById(technologyList, technologyId));
+		deactivateTechnology(findTechnologyById(technologyList, getTechnologyId(e.target)));
 	});
 })();
