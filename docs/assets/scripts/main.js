@@ -5,15 +5,15 @@ import SvgRadarFactory from './factories/svg-radar.js';
 import TechnologyRepository from './repositories/technology.js';
 import TechnologyService from './services/technology.js';
 
+import findTechnologyById from './utils/find-technology-by-id.js';
+import isTechnologyElement from './utils/is-technology-element.js';
+
 TechnologyService.setTechnologyRepository(TechnologyRepository);
 
 const elementRadar = $refs.get('radar');
 const elementTechnologyList = $refs.get('technology-list');
 const tooltip = new Tooltip($refs.get('technology-tooltip'));
 let previousSelectedTechnology = null;
-
-const findTechnologyById = (technologyList, technologyId) => technologyList
-	.find(technology => technology.id === technologyId);
 
 const deactivateTechnology = (technology) => {
 	const selector = `[data-technology-id="${technology.id}"]`;
@@ -44,8 +44,6 @@ const activateTechnology = (technology) => {
 
 	previousSelectedTechnology = technology;
 };
-
-const isTechnologyElement = element => 'technologyId' in element.dataset;
 
 (async () => {
 	const levels = await TechnologyService.getLevels();
