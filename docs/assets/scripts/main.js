@@ -40,7 +40,7 @@ const deactivateTechnology = (technology) => {
 const isTechnologyElement = element => 'technologyId' in element.dataset;
 
 const getListItemHtml = item => `<li value="${item.id}" data-technology-id="${item.id}">${item.name}</li>`;
-const getListHtml = (list, listType = 'ol') => `<${listType}>${list.map(getListItemHtml).join('')}</${listType}>`;
+const getListHtml = (list, listType = 'ol') => `<${listType} class="technology-list__list">${list.map(getListItemHtml).join('')}</${listType}>`;
 
 (async () => {
 	const levels = await TechnologyService.getLevels();

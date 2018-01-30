@@ -11,10 +11,15 @@ body {
     font-family: sans-serif;
 }
 
+.app {
+    display: grid;
+    grid-template-areas: 'radar' 'list';
+    grid-column-gap: 2em;
+}
+
 .container {
     max-width: 36em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 1em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -47,5 +52,15 @@ body {
 .fill--level-4 { fill: var(--color-level--4); }
 
 .is-active {
-    font-weight: bolder;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 64em) {
+    .app {
+        grid-template-areas: 'radar list';
+    }
+
+    .container {
+        max-width: 100%;
+    }
 }
