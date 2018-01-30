@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "browser-sync start -s public -f public"
+    "start": "browser-sync start -s docs -f docs"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",
