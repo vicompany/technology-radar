@@ -11,26 +11,6 @@ export default {
 		return this._getSvg(Vector2.fromScalar(512, 512), svgLevels + svgContents);
 	},
 
-	_getTechnologyRadiusOffset(nthLevel, nthTechnology) {
-		const spread = 0.2;
-		const radius = nthLevel === 0
-			? [0.5, 0.5 + spread]
-			: [0.5 - spread, 0.5 + spread];
-
-		return radius[nthTechnology % 2];
-	},
-
-	_getLevelsSvg(levels) {
-		return levels.reduce((svg, level, i) => `<circle
-			r="${this._getLevelRadius(levels, i) * 50}%"
-			class="fill fill--level-${i + 1}"></circle>
-			${svg}`, '');
-	},
-
-	_getLevelRadius(levels, n) {
-		return (n + 1) / levels.length;
-	},
-
 	_getItemsSvg(levels, technologyByLevel) {
 		const technologyRadius = 4;
 
@@ -54,6 +34,17 @@ export default {
 		}, '');
 	},
 
+	_getLevelRadius(levels, n) {
+		return (n + 1) / levels.length;
+	},
+
+	_getLevelsSvg(levels) {
+		return levels.reduce((svg, level, i) => `<circle
+			r="${this._getLevelRadius(levels, i) * 50}%"
+			class="fill fill--level-${i + 1}"></circle>
+			${svg}`, '');
+	},
+
 	_getRequiredSurfaceArea(technologyCount) {
 		const surfacePerTechnology = 32;
 
@@ -67,5 +58,14 @@ export default {
 			class="radar"
 			height="${size.y}" width="${size.x}"
 			viewBox="${-sizeHalf.x} ${-sizeHalf.y} ${size.x} ${size.y}">${contents}</svg>`;
+	},
+
+	_getTechnologyRadiusOffset(nthLevel, nthTechnology) {
+		const spread = 0.2;
+		const radius = nthLevel === 0
+			? [0.5, 0.5 + spread]
+			: [0.5 - spread, 0.5 + spread];
+
+		return radius[nthTechnology % 2];
 	},
 };
