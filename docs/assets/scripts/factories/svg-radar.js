@@ -5,7 +5,7 @@ const lerp = (a, b, t) => (t * (b - a)) + a;
 
 export default {
 	get(levels, technologyByLevel) {
-		const svgContents = this._getItemsSvg();
+		const svgContents = this._getItemsSvg(levels, technologyByLevel);
 		const svgLevels = this._getLevelsSvg(levels);
 
 		return this._getSvg(Vector2.fromScalar(512, 512), svgLevels + svgContents);
@@ -27,7 +27,7 @@ export default {
 
 				return `<circle r="${technologyRadius}"
 					cx="${position.x * 50}%"
-					cy="${position.y * 50} %"
+					cy="${position.y * 50}%"
 					class="radar__technology"
 					data-technology-id="${technology.id}"></circle>`;
 			}).join('');
