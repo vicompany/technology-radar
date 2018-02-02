@@ -5,8 +5,8 @@ const lerp = (a, b, t) => (t * (b - a)) + a;
 
 export default {
 	get(levels, technologyByLevel) {
-		const svgContents = this._getItems();
-		const svgLevels = this._getLevels(levels);
+		const svgContents = this._getItemsSvg();
+		const svgLevels = this._getLevelsSvg(levels);
 
 		return this._getSvg(Vector2.fromScalar(512, 512), svgLevels + svgContents);
 	},
@@ -20,7 +20,7 @@ export default {
 		return radius[nthTechnology % 2];
 	},
 
-	_getLevels(levels) {
+	_getLevelsSvg(levels) {
 		return levels.reduce((svg, level, i) => `<circle
 			r="${this._getLevelRadius(levels, i) * 50}%"
 			class="fill fill--level-${i + 1}"></circle>
@@ -31,7 +31,7 @@ export default {
 		return (n + 1) / levels.length;
 	},
 
-	_getItems(levels, technologyByLevel) {
+	_getItemsSvg(levels, technologyByLevel) {
 		const technologyRadius = 4;
 
 		return technologyByLevel.reduce((svg, level, levelIndex) => {
