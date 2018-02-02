@@ -27,7 +27,7 @@ export default {
 			}).join('');
 		}, '');
 
-		return this._getBase(Vector2.fromScalar(512, 512), svgLevels + svgContents);
+		return this._getSvg(Vector2.fromScalar(512, 512), svgLevels + svgContents);
 	},
 
 	_getTechnologyRadiusOffset(nthLevel, nthTechnology) {
@@ -56,7 +56,7 @@ export default {
 		return surfacePerTechnology * technologyCount;
 	},
 
-	_getBase(size, contents) {
+	_getSvg(size, contents) {
 		const sizeHalf = size.clone().multiplyScalar(0.5);
 
 		return `<svg xmlns="http://www.w3.org/2000/svg"
