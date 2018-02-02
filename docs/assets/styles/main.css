@@ -43,6 +43,9 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.technology-list__title {
+    margin-top: 0;
+}
 
 .tooltip {
     padding: 0.5em;
@@ -70,6 +73,7 @@ body {
 @media only screen and (min-width: 64em) {
     .app {
         grid-template-areas: 'radar list';
+        grid-template-columns: 1fr 2fr;
     }
 
     .container {

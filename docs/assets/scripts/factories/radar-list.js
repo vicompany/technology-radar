@@ -9,9 +9,9 @@ export default {
 
 			return `${html}
 			<div>
-				<h2>${level.name}</h2>
+				<h2 class="technology-list__title">${level.name}</h2>
 				${listTechnology}
 			</div>`;
 		}, '');
-	}
+	},
 };
