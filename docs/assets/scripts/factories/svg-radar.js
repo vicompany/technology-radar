@@ -5,27 +5,8 @@ const lerp = (a, b, t) => (t * (b - a)) + a;
 
 export default {
 	get(levels, technologyByLevel) {
+		const svgContents = this._getItems();
 		const svgLevels = this._getLevels(levels);
-		const technologyRadius = 4;
-
-		const svgContents = technologyByLevel.reduce((svg, level, levelIndex) => {
-			const levelInnerRadius = this._getLevelRadius(levels, levelIndex - 1);
-			const levelOuterRadius = this._getLevelRadius(levels, levelIndex);
-			const rotationOffset = levelIndex * TAU * 0.25;
-
-			return svg + level.items.map((technology, technologyIndex) => {
-				const radiusOffset = this._getTechnologyRadiusOffset(levelIndex, technologyIndex);
-				const angle = ((technologyIndex / level.items.length) * TAU) + rotationOffset;
-				const radius = lerp(levelInnerRadius, levelOuterRadius, radiusOffset);
-				const position = Vector2.fromPolar(angle, radius);
-
-				return `<circle r="${technologyRadius}"
-					cx="${position.x * 50}%"
-					cy="${position.y * 50}%"
-					class="radar__technology"
-					data-technology-id="${technology.id}"></circle>`;
-			}).join('');
-		}, '');
 
 		return this._getSvg(Vector2.fromScalar(512, 512), svgLevels + svgContents);
 	},
@@ -48,6 +29,29 @@ export default {
 
 	_getLevelRadius(levels, n) {
 		return (n + 1) / levels.length;
+	},
+
+	_getItems(levels, technologyByLevel) {
+		const technologyRadius = 4;
+
+		return technologyByLevel.reduce((svg, level, levelIndex) => {
+			const levelInnerRadius = this._getLevelRadius(levels, levelIndex - 1);
+			const levelOuterRadius = this._getLevelRadius(levels, levelIndex);
+			const rotationOffset = levelIndex * TAU * 0.25;
+
+			return svg + level.items.map((technology, technologyIndex) => {
+				const radiusOffset = this._getTechnologyRadiusOffset(levelIndex, technologyIndex);
+				const angle = ((technologyIndex / level.items.length) * TAU) + rotationOffset;
+				const radius = lerp(levelInnerRadius, levelOuterRadius, radiusOffset);
+				const position = Vector2.fromPolar(angle, radius);
+
+				return `<circle r="${technologyRadius}"
+					cx="${position.x * 50}%"
+					cy="${position.y * 50} %"
+					class="radar__technology"
+					data-technology-id="${technology.id}"></circle>`;
+			}).join('');
+		}, '');
 	},
 
 	_getRequiredSurfaceArea(technologyCount) {
