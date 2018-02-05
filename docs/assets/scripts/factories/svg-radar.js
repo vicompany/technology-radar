@@ -1,6 +1,6 @@
 import Vector2 from '../models/vector2.js';
+import TechnologyCircle from '../models/technology-circle.js';
 
-// const TAU = Math.PI * 2;
 const lerp = (a, b, t) => (t * (b - a)) + a;
 
 export default {
@@ -16,26 +16,40 @@ export default {
 	},
 
 	_getItemsSvg(levels, technologyByLevel) {
-		const technologyRadius = 4;
+		const technologyCircles = technologyByLevel.reduce((circles, level) => {
+			const levelInnerRadius = this._getLevelRadius(levels, level.level.index - 1);
+			const levelOuterRadius = this._getLevelRadius(levels, level.level.index);
 
-		return technologyByLevel.reduce((svg, level, levelIndex) => {
-			const levelInnerRadius = this._getLevelRadius(levels, levelIndex - 1);
-			const levelOuterRadius = this._getLevelRadius(levels, levelIndex);
+			return circles.concat(level.items.map((technology) => {
+				const angle = Math.random() * Math.PI * 0.5;
+				const radius = lerp(levelInnerRadius, levelOuterRadius, lerp(0.25, 0.75, Math.random()));
+				const tc = new TechnologyCircle(technology, level.level, 12);
 
-			return svg + level.items.map((technology, technologyIndex) => {
-				const radiusOffset = this._getTechnologyRadiusOffset(levelIndex, technologyIndex);
-				const angle = lerp(0, Math.PI * 0.5, technologyIndex / level.items.length);
-				const radius = lerp(levelInnerRadius, levelOuterRadius, radiusOffset);
-				const position = Vector2.fromPolar(angle, radius);
-				const strokeWidth = 0.5;
+				tc.position = Vector2.fromPolar(angle, radius);
 
-				return `<circle r="${technologyRadius * (1 + (0.5 * strokeWidth))}"
-					cx="${position.x * 100}%"
-					cy="${position.y * 100}%"
-					stroke-width="${technologyRadius * strokeWidth}"
-					class="radar__technology stroke stroke--level-${levelIndex + 1}"
-					data-technology-id="${technology.id}"></circle>`;
-			}).join('');
+				return tc;
+			}));
+		}, []);
+
+		for (let i = 0; i < 1364; i++) {
+			technologyCircles.forEach((tc) => {
+				const levelInnerRadius = this._getLevelRadius(levels, tc.level.index - 1);
+				const levelOuterRadius = this._getLevelRadius(levels, tc.level.index);
+
+				tc.test(technologyCircles, levelInnerRadius + tc.radius, levelOuterRadius - tc.radius);
+			});
+		}
+
+		return technologyCircles.reduce((svg, tc) => {
+			return `${svg} <g transform="translate(${tc.position.x}, ${tc.position.y})">
+				<circle r="${tc.radius}"
+					class="radar__technology"
+					data-technology-id="${tc.technology.id}"></circle>
+				<text x="0" y="0"
+					text-anchor="middle"
+					transform="translate(0, 4.5)"
+					class="radar__technology-id fill--level-${tc.level.index + 1}">${tc.technology.id}</text>
+			</g>`;
 		}, '');
 	},
 
@@ -45,13 +59,13 @@ export default {
 			const levelOuterRadius = this._getLevelRadius(levels, i);
 			const radius = lerp(levelInnerRadius, levelOuterRadius, 0.5);
 
-			return `<text x="${radius * 100}%" y="${this.fontSize * -0.5}"
+			return `<text x="${radius}" y="${this.fontSize * -0.5}"
 				class="radar__level-label">${level.name}</text>${svg}`;
 		}, '');
 	},
 
 	_getLevelRadius(levels, n) {
-		return (n + 1) / levels.length;
+		return (n + 1) / levels.length * this.size;
 	},
 
 	_getLevelsSvg(levels) {
@@ -60,7 +74,6 @@ export default {
 
 			return `<path
 				d="M -${radius} 0 A ${radius} ${radius} 0 0 0 ${radius} 0 Z"
-				transform="scale(${this.size})"
 				class="fill fill--level-${i + 1}"></path>${svg}`;
 		}, '');
 	},
@@ -78,17 +91,5 @@ export default {
 			class="radar"
 			height="${size.y}" width="${size.x}"
 			viewBox="0 ${-labelHeight} ${size.x} ${size.y + labelHeight}">${contents}</svg>`;
-	},
-
-	_getTechnologyRadiusOffset(nthLevel, nthTechnology) {
-		const padding = 0.2;
-		const levels = nthLevel === 0 ? 6 : 4;
-		const t = (nthTechnology % levels) / levels;
-
-		if (nthLevel === 0) {
-			return lerp(0.5, 1 - padding, t);
-		}
-
-		return lerp(padding, 1 - padding, t);
 	},
 };

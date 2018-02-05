@@ -38,6 +38,10 @@ body {
 .radar__technology {
     fill: var(--color-level--5);
 }
+.radar__technology-id {
+    font-size: .75em;
+    font-weight: bold;
+}
 
 .technology-list {
     display: grid;
@@ -70,10 +74,10 @@ body {
     text-decoration: underline;
 }
 
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 94em) {
     .app {
         grid-template-areas: 'radar list';
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .container {
