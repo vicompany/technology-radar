@@ -40,6 +40,7 @@ export default {
 			});
 		}
 
+		// eslint-disable-next-line arrow-body-style
 		return technologyCircles.reduce((svg, tc) => {
 			return `${svg} <g transform="translate(${tc.position.x}, ${tc.position.y})">
 				<circle r="${tc.radius}"
