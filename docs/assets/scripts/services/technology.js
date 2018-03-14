@@ -1,20 +1,30 @@
 export default {
 	technologyRepository: null,
 
-	setTechnologyRepository(technologyRepository) {
-		this.technologyRepository = technologyRepository;
+	dispose() {
+		this.technologyRepository.dispose();
+
+		return this;
 	},
 
-	async getTechnology() {
-		return (await this.technologyRepository.getTechnology())
+	async getLevels(version) {
+		return this.technologyRepository.getLevels(version);
+	},
+
+	async getTechnology(version) {
+		return (await this.technologyRepository.getTechnology(version))
 			.reduce((technology, level) => technology.concat(level.items), []);
 	},
 
-	async getTechnologyByLevel() {
-		return this.technologyRepository.getTechnology();
+	async getTechnologyByLevel(version) {
+		return this.technologyRepository.getTechnology(version);
 	},
 
-	async getLevels() {
-		return this.technologyRepository.getLevels();
+	async getVersions() {
+		return this.technologyRepository.getVersions();
+	},
+
+	setTechnologyRepository(technologyRepository) {
+		this.technologyRepository = technologyRepository;
 	},
 };

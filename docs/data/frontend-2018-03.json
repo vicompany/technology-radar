@@ -1,0 +1,73 @@
+{
+  "levels": [{
+      "key": "adopt",
+      "name": "Adopt"
+    },
+    {
+      "key": "trial",
+      "name": "Trial"
+    },
+    {
+      "key": "assess",
+      "name": "Assess"
+    },
+    {
+      "key": "hold",
+      "name": "Hold"
+    }
+  ],
+
+  "items": {
+    "adopt": [
+      "Ava.js",
+      "Babel",
+      "Browserify",
+      "CSS: BEM",
+      "CSS: ITCSS",
+      "ES2017",
+      "Fractal",
+      "Gulp",
+      "Highcharts",
+      "Mobile-first",
+      "NPM Publish",
+      "Progressive Enhancement",
+      "Sass",
+      "WAI ARIA",
+      "CSS: Grid",
+      "ChartIQ",
+      "NPM Scripts",
+      "MJML",
+      "Performance budget",
+      "Vue.js",
+      "WebP"
+    ],
+    "trial": [],
+    "assess": [
+      "CSS: Custom properties",
+      "CDN (for assets)",
+      "Critical CSS/JS",
+      "Dynamic imports",
+      "Functional programming",
+      "HTTP2",
+      "HyperHtml",
+      "lit-html",
+      "Node.js frontend",
+      "PostCSS (CSSNext)",
+      "Progressive Web Apps",
+      "(P)React",
+      "Rollup",
+      "Streams",
+      "Web Components",
+      "WebPack"
+    ],
+    "hold": [
+      "Backbone.js",
+      "Grunt",
+      "Icon fonts",
+      "jQuery",
+      "Mustache",
+      "Patternlab",
+      "SignalR"
+    ]
+  }
+}
