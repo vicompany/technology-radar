@@ -10,7 +10,7 @@ const technologyIdFactory = new IdFactory();
 
 const parseItems = (levels, items) => levels.reduce((itemList, level) => {
 	const itemsParsed = items[level.key]
-		.map(item => new TechnologyModel(technologyIdFactory.next(), item));
+		.map(item => new TechnologyModel(technologyIdFactory.next(), item, level));
 
 	return [...itemList, {
 		level,
@@ -20,28 +20,28 @@ const parseItems = (levels, items) => levels.reduce((itemList, level) => {
 
 export default {
 	async _getTechnology(version) {
-		if (!this._technology) {
+		if (!this._technology.has(version)) {
 			const technology = await (await fetch(version.path)).json();
 			const levels = await this.getLevels();
 
-			this._technology = Object.assign({}, technology, {
+			this._technology.set(version, Object.assign({}, technology, {
 				levels,
 				items: parseItems(levels, technology),
-			});
+			}));
 		}
 
-		return this._technology;
+		return this._technology.get(version);
 	},
 
 	dispose() {
 		this._levels = null;
-		this._technology = null;
+		this._technology = new Map();
 		this._versions = null;
 
 		technologyIdFactory.reset();
 	},
 
-	async getLevels(version) {
+	async getLevels() {
 		if (!this._levels) {
 			const levels = await (await fetch(URL_LEVELS)).json();
 
