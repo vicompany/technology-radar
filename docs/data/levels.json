@@ -1,0 +1,17 @@
+[{
+    "key": "adopt",
+    "name": "Adopt"
+  },
+  {
+    "key": "trial",
+    "name": "Trial"
+  },
+  {
+    "key": "assess",
+    "name": "Assess"
+  },
+  {
+    "key": "hold",
+    "name": "Hold"
+  }
+]

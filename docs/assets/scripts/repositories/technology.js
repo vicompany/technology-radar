@@ -3,7 +3,9 @@ import LevelModel from '../models/level.js';
 import TechnologyModel from '../models/technology.js';
 import VersionModel from '../models/version.js';
 
-const URL = 'data/frontend.json';
+const URL_VERSIONS = 'data/frontend.json';
+const URL_LEVELS = 'data/levels.json';
+
 const technologyIdFactory = new IdFactory();
 
 const parseItems = (levels, items) => levels.reduce((itemList, level) => {
@@ -17,37 +19,45 @@ const parseItems = (levels, items) => levels.reduce((itemList, level) => {
 }, []);
 
 export default {
-	async _getData(version) {
-		if (!this._data) {
-			const data = await (await fetch(version.path)).json();
-			const levels = data.levels.map(LevelModel.fromObject);
+	async _getTechnology(version) {
+		if (!this._technology) {
+			const technology = await (await fetch(version.path)).json();
+			const levels = await this.getLevels();
 
-			this._data = Object.assign({}, data, {
+			this._technology = Object.assign({}, technology, {
 				levels,
-				items: parseItems(levels, data.items),
+				items: parseItems(levels, technology),
 			});
 		}
 
-		return this._data;
+		return this._technology;
 	},
 
 	dispose() {
-		this._data = null;
+		this._levels = null;
+		this._technology = null;
 		this._versions = null;
+
 		technologyIdFactory.reset();
 	},
 
 	async getLevels(version) {
-		return (await this._getData(version)).levels;
+		if (!this._levels) {
+			const levels = await (await fetch(URL_LEVELS)).json();
+
+			this._levels = levels.map(LevelModel.fromObject);
+		}
+
+		return this._levels;
 	},
 
 	async getTechnology(version) {
-		return (await this._getData(version)).items;
+		return (await this._getTechnology(version)).items;
 	},
 
 	async getVersions() {
 		if (!this._versions) {
-			this._versions = (await (await fetch(URL)).json())
+			this._versions = (await (await fetch(URL_VERSIONS)).json())
 				.map(VersionModel.fromPath);
 		}
 
