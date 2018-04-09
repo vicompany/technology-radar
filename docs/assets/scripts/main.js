@@ -19,9 +19,7 @@ const loadVersion = async (version, versionPrevious) => {
 	const levels = await TechnologyService.getLevels();
 	const technologyList = await TechnologyService.getTechnology(version);
 	const technologyByLevel = await TechnologyService.getTechnologyByLevel(version);
-	const technologyDeltas = versionPrevious
-		? await TechnologyService.getTechnologyDeltas(version, versionPrevious)
-		: null;
+	const technologyDeltas = await TechnologyService.getTechnologyDeltas(version, versionPrevious);
 
 	elementRadar.innerHTML = SvgRadarFactory.get(levels, technologyByLevel, technologyList);
 	elementTechnologyList.innerHTML = RadarListFactory.get(technologyByLevel, technologyDeltas);

@@ -13,7 +13,7 @@ const getListHtml = (list, listType = 'ol', technologyDeltas = 0) => {
 	const listItems = list.map((item) => {
 		const delta = technologyDeltas.get(item);
 
-		return getListItemHtml(item, typeof delta === 'number' ? delta : Infinity);
+		return getListItemHtml(item, delta);
 	});
 
 	return `<${listType}>${listItems.join('')}</${listType}>`;

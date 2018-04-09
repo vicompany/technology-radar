@@ -5,6 +5,7 @@ export default class VersionPicker extends Base {
 		super(element);
 
 		this.elementSelect = VersionPicker.createDocumentFragment(versions);
+		this.elementSelect.hidden = versions.length < 2;
 		this.element.appendChild(this.elementSelect);
 
 		this.elementSelect.addEventListener('change', (event) => {
