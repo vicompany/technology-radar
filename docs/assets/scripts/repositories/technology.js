@@ -62,5 +62,5 @@ export default {
 		}
 
 		return this._versions;
-	}
+	},
 };
