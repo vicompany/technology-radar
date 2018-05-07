@@ -32,15 +32,15 @@ body {
 }
 
 .container {
-    max-width: 36em;
     padding: 1em;
+    max-width: 80em;
     margin-left: auto;
     margin-right: auto;
 }
 
 .technology-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 .technology-list__title {
     margin-top: 0;
@@ -55,8 +55,14 @@ body {
     transform: translate(-50%, calc(-50% - 2em));
 }
 
-@media only screen and (min-width: 94em) {
-    .container {
-        max-width: 100%;
+@media only screen and (min-width: 30em) {
+    .technology-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 80em) {
+    .technology-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
