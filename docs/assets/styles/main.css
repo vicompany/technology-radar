@@ -45,6 +45,9 @@ body {
 .technology-list__title {
     margin-top: 0;
 }
+.technology-list__level-hold {
+    opacity: 0.5;
+}
 
 .tooltip {
     padding: 0.5em;
