@@ -47,8 +47,4 @@ export default {
 	setTechnologyRepository(technologyRepository) {
 		this.technologyRepository = technologyRepository;
 	},
-
-	findLevel(items, technology) {
-		return items.find(t => t.id === technology.id);
-	},
 };

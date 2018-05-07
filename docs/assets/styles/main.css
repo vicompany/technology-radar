@@ -16,13 +16,6 @@ body {
     line-height: 1.2;
 }
 
-.app {
-    display: grid;
-    grid-template-areas: 'historic historic'
-    'radar list';
-    grid-column-gap: 2em;
-}
-
 .delta::after {
     content: '';
     display: inline;
@@ -45,34 +38,6 @@ body {
     margin-right: auto;
 }
 
-.historic-data {
-    grid-area: historic;
-}
-
-.radar-container {
-    grid-area: radar;
-}
-
-.radar {
-    height: auto;
-    width: 100%;
-}
-.radar__level-label {
-    font-weight: bold;
-    text-anchor: middle;
-}
-.radar__technology {
-    fill: var(--color-level--5);
-}
-.radar__technology-id {
-    font-size: .75em;
-    font-weight: bold;
-}
-
-.technology-list-container {
-    grid-area: list;
-}
-
 .technology-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -90,25 +55,7 @@ body {
     transform: translate(-50%, calc(-50% - 2em));
 }
 
-.fill--level-1 { fill: var(--color-level--1); }
-.fill--level-2 { fill: var(--color-level--2); }
-.fill--level-3 { fill: var(--color-level--3); }
-.fill--level-4 { fill: var(--color-level--4); }
-
-.stroke--level-1 { stroke: var(--color-level--1); }
-.stroke--level-2 { stroke: var(--color-level--2); }
-.stroke--level-3 { stroke: var(--color-level--3); }
-.stroke--level-4 { stroke: var(--color-level--4); }
-
-.is-active {
-    text-decoration: underline;
-}
-
 @media only screen and (min-width: 94em) {
-    .app {
-        grid-template-columns: 1fr 1fr;
-    }
-
     .container {
         max-width: 100%;
     }
