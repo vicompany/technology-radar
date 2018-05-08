@@ -45,7 +45,7 @@ export default {
 		if (!this._levels) {
 			const levels = await (await fetch(URL_LEVELS)).json();
 
-			this._levels = levels.map(LevelModel.fromObject);
+			this._levels = levels.map((obj, index) => new LevelModel(obj.key, obj.name, index));
 		}
 
 		return this._levels;

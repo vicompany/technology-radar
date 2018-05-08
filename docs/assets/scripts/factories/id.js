@@ -9,5 +9,7 @@ export default class IdFactory {
 
 	reset() {
 		this.previousId = 0;
+
+		return this;
 	}
 }
