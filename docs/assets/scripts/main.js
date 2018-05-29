@@ -8,7 +8,7 @@ import TechnologyService from './services/technology.js';
 TechnologyService.setTechnologyRepository(TechnologyRepository);
 
 const elementTechnologyList = $refs.get('technology-list');
-const elementHistoricDataPicker = $refs.get('container-historic-data-picker');
+const elementVersionPicker = $refs.get('version-picker');
 
 const getPreviousVersion = (versions, version) => {
 	const versionIndex = versions.indexOf(version);
@@ -29,7 +29,7 @@ const loadVersion = async (version, versionPrevious) => {
 
 (async () => {
 	const versions = await TechnologyService.getVersions();
-	const versionPicker = new VersionPicker(elementHistoricDataPicker, versions);
+	const versionPicker = new VersionPicker(elementVersionPicker, versions);
 	const versionCurrent = versions[versions.length - 1];
 	const versionPrevious = getPreviousVersion(versions, versionCurrent);
 

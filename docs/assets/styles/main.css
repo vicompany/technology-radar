@@ -58,6 +58,10 @@ body {
     transform: translate(-50%, calc(-50% - 2em));
 }
 
+.version-picker {
+    margin-bottom: 1em;
+}
+
 @media only screen and (min-width: 30em) {
     .technology-list {
         grid-template-columns: 1fr 1fr;
