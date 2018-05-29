@@ -3,7 +3,7 @@ import LevelModel from '../models/level.js';
 import TechnologyModel from '../models/technology.js';
 import VersionModel from '../models/version.js';
 
-const URL_VERSIONS = 'data/frontend.json';
+const URL_VERSIONS = 'data/versions.json';
 const URL_LEVELS = 'data/levels.json';
 
 const technologyIdFactory = new IdFactory();
