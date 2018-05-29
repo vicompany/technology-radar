@@ -28,6 +28,7 @@
   "assess": [
     "CSS: Custom properties",
     "CDN (for assets)",
+    "Conditioner",
     "Critical CSS/JS",
     "Dynamic imports",
     "Fastify",
