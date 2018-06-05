@@ -21,8 +21,7 @@ export default class VersionPicker extends Base {
 	}
 
 	static createDocumentFragment(data) {
-		const range = document.createRange();
-		const fragment = range.createContextualFragment(`<select>
+		const fragment = document.createRange().createContextualFragment(`<select>
 			${data.map(snapshot => `<option value="${snapshot.id}">
 				${snapshot.name}
 			</option>`).join('')}

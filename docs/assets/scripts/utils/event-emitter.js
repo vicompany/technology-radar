@@ -5,11 +5,10 @@ export default class EventEmitter {
 
 	on(event, handler) {
 		if (typeof event !== 'string') {
-			throw new Error(`Event "${event}" should be a string`);
+			throw new Error(`Event "${event}" is not a String`);
 		}
-
 		if (typeof handler !== 'function') {
-			throw new Error(`Handler "${handler}" should be a function`);
+			throw new Error(`Handler "${handler}" is not a Function`);
 		}
 
 		if (!this._eventHandlers.has(event)) {
@@ -23,7 +22,7 @@ export default class EventEmitter {
 
 	trigger(event, ...args) {
 		if (typeof event !== 'string') {
-			throw new Error(`Event "${event}" should be a string`);
+			throw new Error(`Event "${event}" is not a String`);
 		}
 
 		if (!this._eventHandlers.has(event)) {

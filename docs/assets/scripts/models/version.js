@@ -7,6 +7,13 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
 
 export default class Version {
 	constructor(id, path) {
+		if (typeof id !== 'string') {
+			throw new Error(`ID "${id}" is not a String`);
+		}
+		if (typeof path !== 'string') {
+			throw new Error(`Path "${path}" is not a String`);
+		}
+
 		this.id = id;
 		this.name = Version.getNameFromId(id);
 		this.path = path;
@@ -14,7 +21,7 @@ export default class Version {
 
 	static fromPath(path) {
 		if (typeof path !== 'string') {
-			throw new Error(`Path "${path}" should be a string`);
+			throw new Error(`Path "${path}" is not a String`);
 		}
 
 		const id = getBasename(path, '.json');
@@ -28,9 +35,8 @@ export default class Version {
 
 	static getNameFromId(id) {
 		if (typeof id !== 'string') {
-			throw new Error(`ID "${id}" should be a string`);
+			throw new Error(`ID "${id}" is not a String`);
 		}
-
 		if (!id.match(/^\d{4}-\d{2}$/)) {
 			throw new Error(`ID "${id}" should be be in the following format: "yyyy-mm"`);
 		}
