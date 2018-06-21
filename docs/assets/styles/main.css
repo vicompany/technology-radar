@@ -47,9 +47,17 @@ label {
 .technology-list {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 2rem;
 }
 .technology-list__title {
     margin-top: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.technology-list__level {
+    border-top: 0.125rem solid #333;
+    padding-top: 1rem;
 }
 .technology-list__level--hold {
     opacity: 0.5;
