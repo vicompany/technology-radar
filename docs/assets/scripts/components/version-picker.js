@@ -21,12 +21,14 @@ export default class VersionPicker extends Base {
 	}
 
 	static createDocumentFragment(data) {
-		const fragment = document.createRange().createContextualFragment(`<select>
-			${data.map(snapshot => `<option value="${snapshot.id}">
-				${snapshot.name}
-			</option>`).join('')}
-		</select>`);
+		const fragment = document.createRange()
+			.createContextualFragment(`<label for="version-picker">Revision</label>
+			<select id="version-picker">
+				${data.map(snapshot => `<option value="${snapshot.id}">
+					${snapshot.name}
+				</option>`).join('')}
+			</select>`);
 
-		return fragment.firstElementChild;
+		return fragment;
 	}
 }
