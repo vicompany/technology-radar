@@ -23,10 +23,10 @@ test.beforeEach((t) => {
 	];
 
 	t.context.technology = [
-		new TechnologyModel('a1', 'a1', t.context.levels[0]),
-		new TechnologyModel('a2', 'a2', t.context.levels[0]),
-		new TechnologyModel('b1', 'b1', t.context.levels[1]),
-		new TechnologyModel('b2', 'b2', t.context.levels[1]),
+		new TechnologyModel(1, 'a1', t.context.levels[0]),
+		new TechnologyModel(2, 'a2', t.context.levels[0]),
+		new TechnologyModel(3, 'b1', t.context.levels[1]),
+		new TechnologyModel(4, 'b2', t.context.levels[1]),
 	];
 
 	t.context.technologyByLevel = createTechnologyByLevel(t.context.levels, t.context.technology);
