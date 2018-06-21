@@ -1,19 +1,20 @@
 :root {
     /* https://coolors.co/05668d-028090-00a896-02c39a-f0f3bd */
-    --color-level--1: #05668d;
-    --color-level--2: #028090;
-    --color-level--3: #00a896;
-    --color-level--4: #02c39a;
-    --color-level--5: #f0f3bd;
-
-    --color-error: #ea6363;
+    --color-positive: #02c39a;
+    --color-negative: #ea6363;
 }
 
 body {
     background-color: #fcfcfc;
     color: #333;
-    font-family: sans-serif;
-    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
 }
 
 .delta::after {
@@ -21,14 +22,15 @@ body {
     display: inline;
     margin-left: .125rem;
     vertical-align: middle;
+    font-size: smaller;
 }
 .delta--positive::after {
     content: '▲';
-    color: var(--color-level--4);
+    color: var(--color-positive);
 }
 .delta--negative::after {
     content: '▼';
-    color: var(--color-error);
+    color: var(--color-negative);
 }
 
 .container {
