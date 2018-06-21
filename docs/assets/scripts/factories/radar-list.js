@@ -47,7 +47,7 @@ export default {
 			const listTechnology = getListHtml(technology, 'ol', technologyDeltas);
 
 			return `${html}
-			<div class="technology-list__level technology-list__level-${level.key}">
+			<div class="technology-list__level technology-list__level--${level.key}">
 				<h2 class="technology-list__title">${level.name}</h2>
 				${listTechnology}
 			</div>`;
