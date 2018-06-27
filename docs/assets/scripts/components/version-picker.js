@@ -4,8 +4,10 @@ export default class VersionPicker extends Base {
 	constructor(element, versions) {
 		super(element);
 
-		this.elementSelect = VersionPicker.createDocumentFragment(versions);
-		this.element.appendChild(this.elementSelect);
+		const fragment = VersionPicker.createDocumentFragment(versions);
+
+		this.elementSelect = fragment.getElementById('version-picker');
+		this.element.appendChild(fragment);
 
 		this.elementSelect.addEventListener('change', (event) => {
 			const version = versions.find(v => v.id === event.target.value);
