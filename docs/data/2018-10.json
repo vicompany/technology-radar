@@ -1,0 +1,50 @@
+{
+  "adopt": [
+    "Ava.js",
+    "Babel",
+    "CSS: Grid",
+    "CSS: ITCSS",
+    "Fastify",
+    "Fractal",
+    "Highcharts",
+    "Mobile-first",
+    "Node.js frontend",
+    "NPM Publish",
+    "NPM Scripts",
+    "Rollup",
+    "Sass",
+    "Vue.js",
+    "WAI ARIA"
+  ],
+  "trial": [
+    "MJML",
+    "Performance budget",
+    "Progressive Web Apps",
+    "WebP",
+    "WebPack"
+  ],
+  "assess": [
+    "CSS: Custom properties",
+    "CDN (for assets)",
+    "Conditioner",
+    "Critical CSS/JS",
+    "Dynamic imports",
+    "Functional programming",
+    "HTTP2",
+    "PostCSS (CSSNext)",
+    "(P)React",
+    "String literal parsers for virtual DOM (HyperHtml, lit-html)",
+    "Web Components"
+  ],
+  "hold": [
+    "Backbone.js",
+    "Browserify",
+    "Grunt",
+    "Gulp",
+    "Icon fonts",
+    "jQuery",
+    "Mustache",
+    "Patternlab",
+    "SignalR"
+  ]
+}
