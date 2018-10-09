@@ -32,6 +32,7 @@
     "Functional programming",
     "HTTP2",
     "PostCSS (CSSNext)",
+    "Puppeteer",
     "(P)React",
     "String literal parsers for virtual DOM (HyperHtml, lit-html)",
     "Web Components"
