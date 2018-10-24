@@ -14,17 +14,17 @@
     "Rollup",
     "Sass",
     "Vue.js",
-    "WAI ARIA"
+    "WAI ARIA",
+    "WebPack"
   ],
   "trial": [
+    "CSS: Custom properties",
     "MJML",
     "Performance budget",
     "Progressive Web Apps",
-    "WebP",
-    "WebPack"
+    "WebP"
   ],
   "assess": [
-    "CSS: Custom properties",
     "CDN (for assets)",
     "Conditioner",
     "Critical CSS/JS",
